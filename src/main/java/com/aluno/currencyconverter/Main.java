@@ -1,3 +1,9 @@
+/**
+ * Author: Sebastian Rodrigues
+ * Date: July 2025
+ * Description: This class is the main entry point for the Currency Converter application.
+ * It provides a menu-driven interface for users to convert between various currencies, including USD, ARS, BRL, and EUR.
+ */
 package com.aluno.currencyconverter;
 
 import java.util.Scanner;

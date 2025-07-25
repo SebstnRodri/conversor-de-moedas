@@ -1,4 +1,4 @@
-# Conversor de Moeda e Temperatura
+# Conversor de Moedas
 
 ## Descrição
 
@@ -19,8 +19,7 @@ Este projeto é um conversor de moeda desenvolvido como parte do Desafio Oracle 
 
 ## Pré-requisitos
 
-- Java Development Kit (JDK) 11 superior
-- IDE (Eclipse, IntelliJ, ou NetBeans)
+- Java Development Kit (JDK) 17 ou superior
 
 ## Instalação
 
