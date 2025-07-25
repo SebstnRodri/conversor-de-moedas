@@ -15,51 +15,59 @@ public class Main {
 
     while (choice != 7) {
       showMenu();
-      System.out.print("Digite o número que corresponde à opção: ");
-      choice = scanner.nextInt();
-      switch (choice) {
-        case 1:
-          System.out.println("Você escolheu: Dólar ==> Peso Argentino");
-          System.out.print("Digite o valor em Dólar: ");
-          double amount = scanner.nextDouble();
-          CurrencyConverter.convert(amount);
-          break;
-        case 2:
-          System.out.println("Você escolheu: Peso Argentino ==> Dólar");
-          // Adicione a lógica para esta conversão aqui
-          break;
-        case 3:
-          System.out.println("Você escolheu: Dólar ==> Real");
-          // Adicione a lógica para esta conversão aqui
-          break;
-        case 4:
-          System.out.println("Você escolheu: Real ==> Dólar");
-          // Adicione a lógica para esta conversão aqui
-          break;
-        case 5:
-          System.out.println("Você escolheu: Dólar ==> Euro");
-          // Adicione a lógica para esta conversão aqui
-          break;
-        case 6:
-          System.out.println("Você escolheu: Euro ==> Dólar");
-          // Adicione a lógica para esta conversão aqui
-          break;
-        case 7:
-          System.out.println("Saindo do programa. Até mais!");
-          break;
-        default:
-          System.out.println("Opção inválida. Por favor, escolha uma opção de 1 a 7.");
-          break;
+      try {
+        choice = readIntInput(scanner, "Digite o número que corresponde à opção: ");
+        if (choice < 1 || choice > 7) {
+          throw new IllegalArgumentException("Opção inválida. Por favor, escolha uma opção de 1 a 7.");
+        }
+        switch (choice) {
+          case 1:
+            System.out.print("Você escolheu: Dólar ==> Peso Argentino\n");
+            double amount = readDoubleInput(scanner, "Digite o valor em Dólar: ");
+            CurrencyConverter.convert(amount, "USD", "ARS");
+            break;
+          case 2:
+            System.out.print("Você escolheu: Peso Argentino ==> Dólar\n");
+            amount = readDoubleInput(scanner, "Digite o valor em Peso Argentino: ");
+            CurrencyConverter.convert(amount, "ARS", "USD");
+            break;
+          case 3:
+            System.out.print("Você escolheu: Dólar ==> Real\n");
+            amount = readDoubleInput(scanner, "Digite o valor em Dólar: ");
+            CurrencyConverter.convert(amount, "USD", "BRL");
+            break;
+          case 4:
+            System.out.print("Você escolheu: Real ==> Dólar\n");
+            amount = readDoubleInput(scanner, "Digite o valor em Real: ");
+            CurrencyConverter.convert(amount, "BRL", "USD");
+            break;
+          case 5:
+            System.out.print("Você escolheu: Dólar ==> Euro\n");
+            amount = readDoubleInput(scanner, "Digite o valor em Dólar: ");
+            CurrencyConverter.convert(amount, "USD", "EUR");
+            break;
+          case 6:
+            System.out.print("Você escolheu: Euro ==> Dólar\n");
+            amount = readDoubleInput(scanner, "Digite o valor em Euro: ");
+            CurrencyConverter.convert(amount, "EUR", "USD");
+            break;
+          case 7:
+            System.out.println("Saindo do programa. Até mais!");
+            break;
+        }
+      } catch (IllegalArgumentException e) {
+        System.out.println("Erro: " + e.getMessage());
+      } catch (Exception e) {
+        System.out.println("Ocorreu um erro inesperado: " + e.getMessage());
       }
-      // Check if the user wants to continue calculating, unless they explicitly chose
-      // to exit
+
       if (choice != 7) {
-        System.out.println("\n"); // Add a newline before asking to continue
+        System.out.println("\n");
         System.out.print("Deseja continuar convertendo? (s/n): ");
-        String continueInput = scanner.next();
+        String continueInput = scanner.nextLine();
         if (!continueInput.equalsIgnoreCase("s")) {
           System.out.println("Saindo do programa. Até mais!");
-          choice = 7; // Set choice to 7 to exit the main loop gracefully
+          choice = 7;
         }
       }
     }
@@ -81,5 +89,43 @@ public class Main {
         ---------------------------------------
                     """;
     System.out.println(menu);
+  }
+
+  /**
+   * Lê uma entrada inteira do usuário, tratando erros de entrada não numérica.
+   *
+   * @param scanner O objeto Scanner para ler a entrada.
+   * @param prompt  A mensagem a ser exibida ao usuário.
+   * @return O inteiro válido digitado pelo usuário.
+   */
+  private static int readIntInput(Scanner scanner, String prompt) {
+    while (true) {
+      System.out.print(prompt);
+      String input = scanner.nextLine();
+      try {
+        return Integer.parseInt(input);
+      } catch (NumberFormatException e) {
+        System.out.println("Entrada inválida. Por favor, digite um número inteiro válido.");
+      }
+    }
+  }
+
+  /**
+   * Lê uma entrada double do usuário, tratando erros de entrada não numérica.
+   *
+   * @param scanner O objeto Scanner para ler a entrada.
+   * @param prompt  A mensagem a ser exibida ao usuário.
+   * @return O double válido digitado pelo usuário.
+   */
+  private static double readDoubleInput(Scanner scanner, String prompt) {
+    while (true) {
+      System.out.print(prompt);
+      String input = scanner.nextLine();
+      try {
+        return Double.parseDouble(input);
+      } catch (NumberFormatException e) {
+        System.out.println("Entrada inválida. Por favor, digite um valor numérico válido.");
+      }
+    }
   }
 }

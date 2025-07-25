@@ -2,7 +2,7 @@
 
 ## Descrição
 
-Este projeto é um conversor de moeda e temperatura desenvolvido como parte do Desafio Oracle ONE (Oracle Next Education). Ele permite que os usuários realizem conversões de moeda entre diferentes moedas e conversões de temperatura entre diferentes escalas.
+Este projeto é um conversor de moeda desenvolvido como parte do Desafio Oracle ONE (Oracle Next Education). Ele permite que os usuários realizem conversões de moeda entre diferentes moedas utilizando taxas de câmbio em tempo real.
 
 ## Funcionalidades
 
@@ -10,13 +10,6 @@ Este projeto é um conversor de moeda e temperatura desenvolvido como parte do D
   - Conversão entre várias moedas (BRL, USD, EUR, GBP, ARS, CLP)
   - Taxas de câmbio em tempo real
   - Interface amigável
-- Conversão de Temperatura:
-  - Celsius para Fahrenheit
-  - Fahrenheit para Celsius
-  - Celsius para Kelvin
-  - Kelvin para Celsius
-  - Fahrenheit para Kelvin
-  - Kelvin para Fahrenheit
 
 ## Tecnologias Utilizadas
 
@@ -43,22 +36,21 @@ git clone [repository-url]
 ## Como Usar
 
 1. Inicie a aplicação
-2. Escolha o tipo de conversão (Moeda ou Temperatura)
-3. Selecione as unidades de entrada e saída
-4. Digite o valor a ser convertido
-5. Clique em "Converter" para ver o resultado
+2. Selecione as unidades de entrada e saída
+3. Digite o valor a ser convertido
+4. Clique em "Converter" para ver o resultado
 
-## Estrutura do Projeto
+### Diagrama de Fluxo do Sistema
 
-```
-src/
-├── main/
-│   ├── converter/
-│   │   ├── CurrencyConverter.java
-│   │   └── TemperatureConverter.java
-│   ├── gui/
-│   │   └── ConverterGUI.java
-│   └── Main.java
+```mermaid
+flowchart TD
+    User[Usuário] -->|Entra com dados e escolhe opção| Main[Main.java]
+    Main -->|Solicita conversão| Currency[CurrencyConverter.java]
+    Currency -->|Solicita taxa de câmbio| Api[ExchangeRateApiClient.java]
+    Api -->|Retorna taxa| Currency
+    Currency -->|Retorna valor convertido| Main
+    Main -->|Exibe resultado| User
+
 ```
 
 ## Contribuindo
