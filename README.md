@@ -9,7 +9,7 @@ Este projeto é um conversor de moeda desenvolvido como parte do Desafio Oracle 
 - Conversão de Moeda:
   - Conversão entre várias moedas (BRL, USD, EUR, GBP, ARS, CLP)
   - Taxas de câmbio em tempo real
-  - Interface amigável
+  - Interface amigável via terminal
 
 ## Tecnologias Utilizadas
 
@@ -20,13 +20,33 @@ Este projeto é um conversor de moeda desenvolvido como parte do Desafio Oracle 
 ## Pré-requisitos
 
 - Java Development Kit (JDK) 17 ou superior
+- Chave de API do ExchangeRate-API (gratuita)
+
+## Configuração
+
+1. Obtenha uma chave de API gratuita em [ExchangeRate-API](https://www.exchangerate-api.com/)
+
+2. Configure a variável de ambiente com sua chave:
+
+```bash
+# Linux/macOS
+export EXCHANGE_RATE_API_KEY=sua_chave_aqui
+
+# Windows (PowerShell)
+$env:EXCHANGE_RATE_API_KEY="sua_chave_aqui"
+
+# Windows (Command Prompt)
+set EXCHANGE_RATE_API_KEY=sua_chave_aqui
+```
+
+> **Nota**: Para configuração permanente, adicione a variável de ambiente nas configurações do seu sistema operacional.
 
 ## Instalação
 
 1. Clone este repositório:
 
 ```bash
-git clone [repository-url]
+git clone https://github.com/SebstnRodri/conversor-de-moedas
 ```
 
 2. Abra o projeto em sua IDE preferida
