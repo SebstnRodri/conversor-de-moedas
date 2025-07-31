@@ -30,14 +30,28 @@ git clone [repository-url]
 ```
 
 2. Abra o projeto em sua IDE preferida
-3. Compile e execute a aplicação
+3. Compile o projeto usando Maven:
+
+```bash
+mvn clean install
+```
+
+4. Execute a aplicação
 
 ## Como Usar
 
-1. Inicie a aplicação
-2. Selecione as unidades de entrada e saída
-3. Digite o valor a ser convertido
-4. Clique em "Converter" para ver o resultado
+1. Execute o arquivo JAR gerado:
+
+```bash
+java -jar target/currency-converter-1.0-SNAPSHOT.jar
+```
+
+2. No menu interativo:
+   - Escolha uma das opções de conversão (1-6)
+   - Digite o valor a ser convertido quando solicitado
+   - Veja o resultado da conversão
+   - Digite 's' para continuar convertendo ou 'n' para sair
+   - Escolha a opção 7 para sair do programa
 
 ### Diagrama de Fluxo do Sistema
 
